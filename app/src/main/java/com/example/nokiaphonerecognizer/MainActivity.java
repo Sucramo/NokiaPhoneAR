@@ -2,11 +2,12 @@ package com.example.nokiaphonerecognizer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.app.Activity;
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
@@ -15,18 +16,26 @@ import android.hardware.camera2.params.StreamConfigurationMap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.util.Log;
+
+import android.util.AttributeSet;
 import android.util.Size;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.Surface;
 import android.view.TextureView;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 
-import org.w3c.dom.Text;
 
 import java.util.Arrays;
-import java.util.concurrent.Executor;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    ImageButton flashButton;
+    ImageButton pictureButton;
+    ImageButton settingsButton;
 
     TextureView textureView;
 
@@ -45,10 +54,16 @@ public class MainActivity extends AppCompatActivity {
 
     int MY_PERMISSIONS_REQUEST_CAMERA = 1;
 
+    Menu menu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        flashButton = (ImageButton)findViewById(R.id.flash_button);
+        settingsButton = (ImageButton)findViewById(R.id.settings_button);
+        pictureButton = (ImageButton)findViewById(R.id.take_picture_button);
         textureView = (TextureView)findViewById(R.id.texture);
         textureView.setSurfaceTextureListener(surfaceTextureListener);
     }
@@ -220,6 +235,21 @@ public class MainActivity extends AppCompatActivity {
         backgroundHandler = null;
         handlerThread = null;
     }
+
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.menu, popup.getMenu());
+        popup.show();
+    }
+
+    public void showPopupflash(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.flash_settings, popup.getMenu());
+        popup.show();
+    }
+
 
 }
 

@@ -3,4 +3,13 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorFlash">#018786</color>
+    <color name="colorPrimaryVariant">#6200EE</color>
+    <color name="colorSecondaryVariant">#018786</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorOnBackground">#000000</color>
+    <color name="colorOnError">#B00020</color>
+    <color name="colorOnSurface">#000000</color>
 </resources>
