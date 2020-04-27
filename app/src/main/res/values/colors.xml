@@ -12,4 +12,5 @@
     <color name="colorOnBackground">#000000</color>
     <color name="colorOnError">#B00020</color>
     <color name="colorOnSurface">#000000</color>
+    <color name="control_background">#cc4285f4</color>
 </resources>
