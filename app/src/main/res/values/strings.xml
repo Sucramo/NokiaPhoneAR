@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Nokia Phone Recognizer</string>
+    <string name="welcome_slide1_title">Welcome to your personal Nokia Phone Library</string>
+    <string name="welcome_slide1_text">This App will help you find information on the Nokia phone infront of you, only using you camera</string>
+    <string name="welcome_slide2_title">This app uses your camera</string>
+    <string name="welcome_slide2_text">This app requires the use of your camera. Please click yes on the next slide</string>
+    <string name="next">Next</string>
+    <string name="skip">skip</string>
+    <string name="start">GOT IT!</string>
+
+
 </resources>
