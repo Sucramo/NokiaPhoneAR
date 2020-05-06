@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.*;
@@ -21,11 +22,13 @@ import android.util.AttributeSet;
 import android.util.Size;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+
 
 
 import java.util.Arrays;
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     int MY_PERMISSIONS_REQUEST_CAMERA = 1;
 
-    Menu menu;
+    MenuItem menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
         flashButton = (ImageButton)findViewById(R.id.flash_button);
         settingsButton = (ImageButton)findViewById(R.id.settings_button);
-        pictureButton = (ImageButton)findViewById(R.id.take_picture_button);
         textureView = (TextureView)findViewById(R.id.texture);
         textureView.setSurfaceTextureListener(surfaceTextureListener);
     }
@@ -248,6 +250,27 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.flash_settings, popup.getMenu());
         popup.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemsSelected(MenuItem menu){
+        switch (menu.getItemId()){
+            case R.id.live_object_test:
+                startActivity(new Intent(MainActivity.this, LiveObjectDetectionActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(menu);
+        }
+    }
+
+    public void openLiveObject(View view){
+        startActivity(new Intent(MainActivity.this, LiveObjectDetectionActivity.class));
     }
 
 

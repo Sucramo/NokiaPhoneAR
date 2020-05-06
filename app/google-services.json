@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "686320758455",
+    "firebase_url": "https://nokiaphonerecon.firebaseio.com",
+    "project_id": "nokiaphonerecon",
+    "storage_bucket": "nokiaphonerecon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:686320758455:android:0c15cc823c227c32502732",
+        "android_client_info": {
+          "package_name": "com.example.nokiaphonerecognizer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "686320758455-ttqo61e9admj56bc1k57gm5dpfsal6bg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPVsY2I_J4PbC91K_x9l0A94QqGNvSXHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "686320758455-ttqo61e9admj56bc1k57gm5dpfsal6bg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

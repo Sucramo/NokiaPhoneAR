@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/top_action_bar_height"
+    android:paddingStart="@dimen/top_action_bar_padding_horizontal"
+    android:paddingEnd="@dimen/top_action_bar_padding_horizontal"
+    android:background="@drawable/top_action_bar_trim">
+
+    <ImageView
+        android:id="@+id/close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:padding="@dimen/top_action_button_padding"
+        android:contentDescription="@string/cd_close_button"
+        app:srcCompat="@drawable/ic_flash_on_black_40dp"/>
+
+    <ImageView
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:padding="@dimen/top_action_button_padding"
+        app:srcCompat="@drawable/ic_more_vert_black_24dp"/>
+
+    <ImageView
+        android:id="@+id/flash_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="276dp"
+        android:layout_toStartOf="@id/settings_button"
+        android:padding="@dimen/top_action_button_padding"
+        app:srcCompat="@drawable/ic_flash_on_black_40dp" />
+
+</RelativeLayout>

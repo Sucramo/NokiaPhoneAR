@@ -9,6 +9,8 @@
     <item
         android:id="@+id/camera_settings"
         android:title="Camera settings"/>
-
-
+    <item
+        android:id="@+id/live_object_test"
+        android:title="Live Object Detection"
+        />
 </menu>
