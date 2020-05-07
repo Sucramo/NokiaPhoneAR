@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "686320758455",
-    "firebase_url": "https://nokiaphonerecon.firebaseio.com",
-    "project_id": "nokiaphonerecon",
-    "storage_bucket": "nokiaphonerecon.appspot.com"
+    "project_number": "661863332876",
+    "firebase_url": "https://imagerecog-271511.firebaseio.com",
+    "project_id": "imagerecog-271511",
+    "storage_bucket": "imagerecog-271511.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:686320758455:android:0c15cc823c227c32502732",
+        "mobilesdk_app_id": "1:661863332876:android:44605343d009922fd9c229",
         "android_client_info": {
           "package_name": "com.example.nokiaphonerecognizer"
         }
       },
       "oauth_client": [
         {
-          "client_id": "686320758455-ttqo61e9admj56bc1k57gm5dpfsal6bg.apps.googleusercontent.com",
+          "client_id": "661863332876-cd437no4ett7frlskdchvhu7mnr3klt9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBPVsY2I_J4PbC91K_x9l0A94QqGNvSXHY"
+          "current_key": "AIzaSyDw-G2dBDf0Ly9smVfIb8cCbUhSKV54TdI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "686320758455-ttqo61e9admj56bc1k57gm5dpfsal6bg.apps.googleusercontent.com",
+              "client_id": "661863332876-cd437no4ett7frlskdchvhu7mnr3klt9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
