@@ -93,8 +93,6 @@ public class LiveObjectDetectionActivity extends AppCompatActivity implements On
         searchProgressBar = findViewById(R.id.search_progress_bar);
 
         setUpBottomSheet();
-
-        findViewById(R.id.close_button).setOnClickListener(this);
         flashButton = findViewById(R.id.flash_button);
         flashButton.setOnClickListener(this);
         settingsButton = findViewById(R.id.settings_button);
@@ -153,9 +151,6 @@ public class LiveObjectDetectionActivity extends AppCompatActivity implements On
 
         } else if (id == R.id.bottom_sheet_scrim_view) {
             bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-
-        } else if (id == R.id.close_button) {
-            onBackPressed();
 
         } else if (id == R.id.flash_button) {
             if (flashButton.isSelected()) {

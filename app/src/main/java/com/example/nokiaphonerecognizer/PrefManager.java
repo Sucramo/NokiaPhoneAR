@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 public class PrefManager {
-    SharedPreferences pref;
-    SharedPreferences.Editor editor;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
     Context _context;
 
     // shared pref mode
     int PRIVATE_MODE = 0;
 
     // Shared preferences file name
-    private static final String PREF_NAME = "androidhive-welcome";
+    private static final String PREF_NAME = "NokiaRecon-Welcome";
 
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
@@ -28,6 +28,6 @@ public class PrefManager {
     }
 
     public boolean isFirstTimeLaunch() {
-        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, false);
+        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
 }
