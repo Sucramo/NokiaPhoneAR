@@ -24,13 +24,39 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true" />
 
+    <ImageButton
+        android:id="@+id/settings_button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="50dp"
+        android:layout_height="82dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="00dp"
+        android:layout_marginBottom="649dp"
+        android:onClick="showPopup"
+        android:src="@drawable/ic_more_vert_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/flash_button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="49dp"
+        android:layout_height="78dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="312dp"
+        android:layout_toStartOf="@+id/settings_button"
+        android:onClick="showPopupflash"
+        android:src="@drawable/ic_flash_on_black_40dp" />
+
     <FrameLayout
         android:id="@+id/control"
         android:layout_width="match_parent"
         android:layout_height="112dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:background="@color/control_background">
+        android:background="@color/yellow_200">
 
         <TextView android:id="@+id/text"
             android:layout_width="wrap_content"
@@ -39,6 +65,8 @@
             android:textColor="#FFF"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+
 
     </FrameLayout>
 

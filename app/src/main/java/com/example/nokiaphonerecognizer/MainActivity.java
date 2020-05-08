@@ -40,7 +40,6 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton flashButton;
-    ImageButton pictureButton;
     ImageButton settingsButton;
 
     TextureView textureView;
@@ -255,7 +254,6 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.tenserflow_menu:
                 startActivity(new Intent(MainActivity.this, CameraActivity.class));
-                Toast.makeText(MainActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.settings_menu:
                 Toast.makeText(MainActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
