@@ -9,6 +9,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.*;
@@ -21,12 +22,17 @@ import android.util.AttributeSet;
 import android.util.Size;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.Surface;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
+import android.widget.Toast;
 
+
+import com.example.nokiaphonerecognizer.poets.CameraActivity;
 
 import java.util.Arrays;
 
@@ -63,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
         flashButton = (ImageButton)findViewById(R.id.flash_button);
         settingsButton = (ImageButton)findViewById(R.id.settings_button);
-        pictureButton = (ImageButton)findViewById(R.id.take_picture_button);
         textureView = (TextureView)findViewById(R.id.texture);
         textureView.setSurfaceTextureListener(surfaceTextureListener);
     }
@@ -240,7 +245,26 @@ public class MainActivity extends AppCompatActivity {
         PopupMenu popup = new PopupMenu(this, v);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.menu, popup.getMenu());
+        popup.setOnMenuItemClickListener(item -> onMenuItemCLick(item));
         popup.show();
+    }
+
+    //Handles clicks in the dropdown menu
+    public boolean onMenuItemCLick(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.tenserflow_menu:
+                startActivity(new Intent(MainActivity.this, CameraActivity.class));
+                Toast.makeText(MainActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.settings_menu:
+                Toast.makeText(MainActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.admin_login_menu:
+                Toast.makeText(MainActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     public void showPopupflash(View v) {

@@ -9,6 +9,9 @@
     <item
         android:id="@+id/camera_settings"
         android:title="Camera settings"/>
+    <item
+        android:id="@+id/tenserflow_menu"
+        android:title="Tenserflow"/>
 
 
 </menu>
