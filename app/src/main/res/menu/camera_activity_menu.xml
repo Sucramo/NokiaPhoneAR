@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/settings_menu"
+        android:id="@+id/settings_menu_tf"
         android:title="Settings"/>
     <item
-        android:id="@+id/admin_login_menu"
+        android:id="@+id/admin_login_menu_tf"
         android:title="Adminstrator login"/>
     <item
-        android:id="@+id/camera_settings"
+        android:id="@+id/camera_settings_tf"
         android:title="Camera settings"/>
     <item
-        android:id="@+id/tenserflow_menu"
-        android:title="Tenserflow"/>
-
+        android:id="@+id/main_acti_menu"
+        android:title="MainActivity"/>
 
 </menu>
