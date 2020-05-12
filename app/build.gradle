@@ -51,15 +51,18 @@ dependencies {
     androidTestCompile('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'androidx.appcompat:appcompat:1.0.0'
-    compile 'androidx.constraintlayout:constraintlayout:1.1.3'
-    compile 'com.google.android.material:material:1.0.0'
-    compile 'androidx.annotation:annotation:1.0.0'
-    compile 'androidx.legacy:legacy-support-v13:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v13:1.0.0'
     implementation 'org.tensorflow:tensorflow-lite:+'
 
-    implementation "androidx.viewpager:viewpager:1.0.0"
+    //Firebase implementation
+    implementation 'com.google.firebase:firebase-ml-vision:24.0.3'
+    implementation 'com.google.firebase:firebase-ml-vision-automl:18.0.5'
 
+    implementation "androidx.viewpager:viewpager:1.0.0"
 
 
 }
