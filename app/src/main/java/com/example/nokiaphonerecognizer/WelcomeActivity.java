@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.nokiaphonerecognizer.poets.CameraActivity;
+import com.example.nokiaphonerecognizer.tensorflow.CameraActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 

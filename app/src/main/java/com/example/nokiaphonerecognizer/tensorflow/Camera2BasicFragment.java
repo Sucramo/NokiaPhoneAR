@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package com.example.nokiaphonerecognizer.poets;
+package com.example.nokiaphonerecognizer.tensorflow;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -59,6 +59,7 @@ import androidx.core.content.ContextCompat;
 import androidx.legacy.app.FragmentCompat;
 
 import com.example.nokiaphonerecognizer.R;
+import com.example.nokiaphonerecognizer.tensorflow.AutoFitTextureView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,6 +69,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+
 
 /**
  * Basic fragments for the Camera.

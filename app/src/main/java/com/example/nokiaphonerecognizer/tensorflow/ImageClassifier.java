@@ -13,7 +13,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package com.example.nokiaphonerecognizer.poets;
+package com.example.nokiaphonerecognizer.tensorflow;
 
 import android.app.Activity;
 import android.content.res.AssetFileDescriptor;

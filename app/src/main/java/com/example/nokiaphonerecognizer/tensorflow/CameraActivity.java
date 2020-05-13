@@ -13,29 +13,34 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ==============================================================================*/
 
-package com.example.nokiaphonerecognizer.poets;
+package com.example.nokiaphonerecognizer.tensorflow;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
-import com.example.nokiaphonerecognizer.MainActivity;
+
 import com.example.nokiaphonerecognizer.R;
 
 /** Main {@code Activity} class for the Camera app. */
 public class CameraActivity extends Activity {
     ImageButton flashButton;
     ImageButton settingsButton;
+    Button moreInfoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+
+        flashButton = (ImageButton)findViewById(R.id.flash_button);
+        settingsButton = (ImageButton)findViewById(R.id.settings_button);
+        moreInfoButton = (Button)findViewById(R.id.more_info);
 
         if (null == savedInstanceState) {
             getFragmentManager()
@@ -58,7 +63,7 @@ public class CameraActivity extends Activity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.main_acti_menu:
-                startActivity(new Intent(CameraActivity.this, MainActivity.class));
+                Toast.makeText(CameraActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.settings_menu_tf:
                 Toast.makeText(CameraActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
