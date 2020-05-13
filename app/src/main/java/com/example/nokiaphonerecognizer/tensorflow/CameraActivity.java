@@ -62,9 +62,6 @@ public class CameraActivity extends Activity {
     public boolean onMenuItemCLick(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
-            case R.id.main_acti_menu:
-                Toast.makeText(CameraActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
-                return true;
             case R.id.settings_menu_tf:
                 Toast.makeText(CameraActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
                 return true;

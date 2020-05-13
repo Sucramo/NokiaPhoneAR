@@ -6,11 +6,5 @@
     <item
         android:id="@+id/admin_login_menu_tf"
         android:title="Adminstrator login"/>
-    <item
-        android:id="@+id/camera_settings_tf"
-        android:title="Camera settings"/>
-    <item
-        android:id="@+id/main_acti_menu"
-        android:title="MainActivity"/>
 
 </menu>
