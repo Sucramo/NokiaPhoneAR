@@ -18,10 +18,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.nokiaphonerecognizer.poets.AutoFitTextureView
+    <com.example.nokiaphonerecognizer.tensorflow.AutoFitTextureView
         android:id="@+id/texture"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="630dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp" />
 
     <ImageButton
         android:id="@+id/settings_button"
@@ -49,8 +52,9 @@
         android:layout_height="100dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:background="#FFF"
+        android:background="@color/yellow_200"
         android:padding="20dp"
+        app:cardBackgroundColor="@color/yellow_700"
         app:cardCornerRadius="10dp">
 
         <RelativeLayout
@@ -71,12 +75,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text"
-                android:text="More info"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true"
 
-
+                android:background="@color/yellow_800"
+                android:text="@string/button_more_info" />
         </RelativeLayout>
-
 
     </androidx.cardview.widget.CardView>
 
