@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@id/texture"
         android:layout_alignParentStart="true"
-        android:onClick="showPopupflash"
+        android:onClick="showPopupFlash"
         android:src="@drawable/ic_flash_on_black_40dp" />
 
     <androidx.cardview.widget.CardView

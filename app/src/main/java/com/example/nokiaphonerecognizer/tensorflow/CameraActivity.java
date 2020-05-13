@@ -71,4 +71,26 @@ public class CameraActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void showPopupFlash(View view){
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        MenuInflater inflater = popupMenu.getMenuInflater();
+        inflater.inflate(R.menu.flash_settings, popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(item -> onMenuItemCLickFlash(item));
+        popupMenu.show();
+    }
+
+    public boolean onMenuItemCLickFlash(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.flash_off:
+                Toast.makeText(CameraActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.flash_on:
+                Toast.makeText(CameraActivity.this, "This part is not ready yet", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
