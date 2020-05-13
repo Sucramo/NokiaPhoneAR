@@ -100,7 +100,7 @@ public class Camera2BasicFragment extends Fragment
     /**
      * Max preview height that is guaranteed by Camera2 API
      */
-    private static final int MAX_PREVIEW_HEIGHT = 1080;
+    private static final int MAX_PREVIEW_HEIGHT = 1920;
 
     /**
      * {@link TextureView.SurfaceTextureListener} handles several lifecycle events on a {@link
