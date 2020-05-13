@@ -147,8 +147,13 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onError(@NonNull CameraDevice camera, int error) {
-            cameraDevice.close();
-            cameraDevice = null;
+            try {
+                cameraDevice.close();
+                cameraDevice = null;
+            } catch (NullPointerException e) {
+
+            }
+
         }
     };
 

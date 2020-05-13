@@ -14,60 +14,70 @@
  limitations under the License.
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.example.nokiaphonerecognizer.poets.AutoFitTextureView
         android:id="@+id/texture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <ImageButton
         android:id="@+id/settings_button"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="50dp"
-        android:layout_height="82dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="00dp"
-        android:layout_marginBottom="649dp"
         android:onClick="showPopup"
         android:src="@drawable/ic_more_vert_black_24dp" />
 
     <ImageButton
         android:id="@+id/flash_button"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="49dp"
-        android:layout_height="78dp"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/texture"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="312dp"
-        android:layout_toStartOf="@+id/settings_button"
         android:onClick="showPopupflash"
         android:src="@drawable/ic_flash_on_black_40dp" />
 
-    <FrameLayout
+    <androidx.cardview.widget.CardView
         android:id="@+id/control"
         android:layout_width="match_parent"
-        android:layout_height="112dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="100dp"
         android:layout_alignParentStart="true"
-        android:background="@color/yellow_200">
+        android:layout_alignParentBottom="true"
+        android:background="#FFF"
+        android:padding="20dp"
+        app:cardCornerRadius="10dp">
 
-        <TextView android:id="@+id/text"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="80dp"
-            android:textColor="#FFF"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/more_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text"
+                android:text="More info"
+                android:layout_centerHorizontal="true"/>
 
 
+        </RelativeLayout>
 
-    </FrameLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

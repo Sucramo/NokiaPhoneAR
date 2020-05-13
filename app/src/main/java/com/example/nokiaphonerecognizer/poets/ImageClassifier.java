@@ -55,7 +55,7 @@ public class ImageClassifier {
     /**
      * Number of results to show in the UI.
      */
-    private static final int RESULTS_TO_SHOW = 3;
+    private static final int RESULTS_TO_SHOW = 1;
 
     /**
      * An instance of the driver class to run model inference with Tensorflow Lite.
@@ -142,7 +142,8 @@ public class ImageClassifier {
 
         // print the results
         String textToShow = printTopKLabels();
-        textToShow = Long.toString(endTime - startTime) + "ms" + textToShow;
+
+        //textToShow = Long.toString(endTime - startTime) + "ms" + textToShow;
         return textToShow;
     }
 
@@ -230,11 +231,11 @@ public class ImageClassifier {
                     sortedLabels.poll();
                 }
             }
-            String textToShow = "";
+            String textToShow = "%";
             final int size = sortedLabels.size();
             for (int i = 0; i < size; ++i) {
                 Map.Entry<String, Float> label = sortedLabels.poll();
-                textToShow = String.format("\n%s: %4.2f", label.getKey(), label.getValue()) + textToShow;
+                textToShow = "Nokia " + label.getKey() + " (" + label.getValue() + "%)";
             }
             return textToShow;
         }
