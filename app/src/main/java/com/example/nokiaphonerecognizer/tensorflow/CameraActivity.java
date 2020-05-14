@@ -16,6 +16,7 @@ limitations under the License.
 package com.example.nokiaphonerecognizer.tensorflow;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,7 +26,9 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.nokiaphonerecognizer.MoreInfoActivity;
 import com.example.nokiaphonerecognizer.R;
+import com.example.nokiaphonerecognizer.WelcomeActivity;
 
 /** Main {@code Activity} class for the Camera app. */
 public class CameraActivity extends Activity {
@@ -41,6 +44,13 @@ public class CameraActivity extends Activity {
         flashButton = (ImageButton)findViewById(R.id.flash_button);
         settingsButton = (ImageButton)findViewById(R.id.settings_button);
         moreInfoButton = (Button)findViewById(R.id.more_info);
+        
+        /*moreInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("hej");
+            }
+        });*/
 
         if (null == savedInstanceState) {
             getFragmentManager()
@@ -93,4 +103,5 @@ public class CameraActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

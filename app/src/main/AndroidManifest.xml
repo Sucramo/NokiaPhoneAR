@@ -33,6 +33,7 @@
         <activity android:name=".tensorflow.CameraActivity">
 
         </activity>
+        <activity android:name=".MoreInfoActivity" />
 
     </application>
 
