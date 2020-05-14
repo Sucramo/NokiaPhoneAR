@@ -22,7 +22,7 @@
         android:layout_marginBottom="10dp"
         android:text="Nokia 3310"
         android:textColor="@color/black"
-        android:textSize="40dp"
+        android:textSize="30dp"
         android:textStyle="bold" />
 
     <TextView
@@ -47,7 +47,7 @@
         android:layout_marginBottom="10dp"
         android:text="The Nokia 3310 is a GSM mobile phone announced on 1 September 2000, and released in the fourth quarter of the year, replacing the popular Nokia 3210. It sold very well, being one of the most successful phones with 126 million units sold worldwide, and being one of Nokia's most iconic devices. The phone is still widely acclaimed and has gained a cult status due to its durability."
         android:textColor="@color/black"
-        android:textSize="20dp" />
+        android:textSize="15dp" />
 
     <Button
         android:id="@+id/ok-button"
