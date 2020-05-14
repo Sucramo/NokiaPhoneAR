@@ -44,13 +44,7 @@ public class CameraActivity extends Activity {
         flashButton = (ImageButton)findViewById(R.id.flash_button);
         settingsButton = (ImageButton)findViewById(R.id.settings_button);
         moreInfoButton = (Button)findViewById(R.id.more_info);
-        
-        /*moreInfoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("hej");
-            }
-        });*/
+
 
         if (null == savedInstanceState) {
             getFragmentManager()
@@ -102,6 +96,10 @@ public class CameraActivity extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void moreInfoActivityOpener(View v){
+        startActivity(new Intent(CameraActivity.this, MoreInfoActivity.class));
     }
 
 }

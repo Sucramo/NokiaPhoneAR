@@ -62,7 +62,8 @@
                 android:layout_below="@id/text"
                 android:layout_marginBottom="5dp"
                 android:layout_centerHorizontal="true"
-                android:text="@string/button_more_info" />
+                android:text="@string/button_more_info"
+                android:onClick="moreInfoActivityOpener"/>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
