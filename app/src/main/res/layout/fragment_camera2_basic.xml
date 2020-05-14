@@ -63,7 +63,9 @@
                 android:layout_marginBottom="5dp"
                 android:layout_centerHorizontal="true"
                 android:text="@string/button_more_info"
-                android:onClick="moreInfoActivityOpener"/>
+                android:onClick="moreInfoActivityOpener"
+                android:background="@drawable/ripple_effect"
+                android:textColor="@color/white"/>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

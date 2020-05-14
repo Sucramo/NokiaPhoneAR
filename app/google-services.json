@@ -73,6 +73,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "661863332876-a01skhkiaba785ecb4mcmaeog5rhpt2g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nokiaphonerecognizer",
+            "certificate_hash": "fe16dc0b9b21478d4576712a453c4737612e5d89"
+          }
+        },
+        {
           "client_id": "661863332876-cd437no4ett7frlskdchvhu7mnr3klt9.apps.googleusercontent.com",
           "client_type": 3
         }
