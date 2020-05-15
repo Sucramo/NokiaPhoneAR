@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/settings_menu_tf"
-        android:title="Settings"/>
+        android:title="Settings" />
     <item
         android:id="@+id/admin_login_menu_tf"
-        android:title="Adminstrator login"/>
+        android:title="Adminstrator login" />
 
 </menu>

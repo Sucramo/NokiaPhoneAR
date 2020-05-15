@@ -1,18 +1,3 @@
-/* Copyright 2017 The TensorFlow Authors. All Rights Reserved.
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-==============================================================================*/
-
 package com.example.nokiaphonerecognizer.tensorflow;
 
 import android.app.Activity;
@@ -28,9 +13,10 @@ import android.widget.Toast;
 
 import com.example.nokiaphonerecognizer.MoreInfoActivity;
 import com.example.nokiaphonerecognizer.R;
-import com.example.nokiaphonerecognizer.WelcomeActivity;
 
-/** Main {@code Activity} class for the Camera app. */
+/**
+ * Main {@code Activity} class for the Camera app.
+ */
 public class CameraActivity extends Activity {
     ImageButton flashButton;
     ImageButton settingsButton;
@@ -41,16 +27,16 @@ public class CameraActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
-        flashButton = (ImageButton)findViewById(R.id.flash_button);
-        settingsButton = (ImageButton)findViewById(R.id.settings_button);
-        moreInfoButton = (Button)findViewById(R.id.more_info);
+        flashButton = (ImageButton) findViewById(R.id.flash_button);
+        settingsButton = (ImageButton) findViewById(R.id.settings_button);
+        moreInfoButton = (Button) findViewById(R.id.more_info);
 
 
         if (null == savedInstanceState) {
             getFragmentManager()
-              .beginTransaction()
-              .replace(R.id.container, Camera2BasicFragment.newInstance())
-              .commit();
+                    .beginTransaction()
+                    .replace(R.id.container, Camera2BasicFragment.newInstance())
+                    .commit();
         }
     }
 
@@ -76,7 +62,7 @@ public class CameraActivity extends Activity {
         }
     }
 
-    public void showPopupFlash(View view){
+    public void showPopupFlash(View view) {
         PopupMenu popupMenu = new PopupMenu(this, view);
         MenuInflater inflater = popupMenu.getMenuInflater();
         inflater.inflate(R.menu.flash_settings, popupMenu.getMenu());
@@ -98,7 +84,7 @@ public class CameraActivity extends Activity {
         }
     }
 
-    public void moreInfoActivityOpener(View v){
+    public void moreInfoActivityOpener(View v) {
         startActivity(new Intent(CameraActivity.this, MoreInfoActivity.class));
     }
 

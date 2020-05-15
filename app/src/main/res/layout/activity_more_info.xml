@@ -50,15 +50,14 @@
         android:id="@+id/ok_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginStart="100dp"
-        android:text="Ok"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/ripple_effect"
-        android:textColor="@color/white"
-        />
+        android:text="Ok"
+        android:textColor="@color/white" />
 
 
 </RelativeLayout>
