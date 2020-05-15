@@ -22,7 +22,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".WelcomeActivity">
+        <activity
+            android:name=".WelcomeActivity"
+            android:screenOrientation="sensorPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,10 +32,12 @@
 
         </activity>
 
-        <activity android:name=".tensorflow.CameraActivity">
-
-        </activity>
-        <activity android:name=".MoreInfoActivity" />
+        <activity
+            android:name=".tensorflow.CameraActivity"
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".MoreInfoActivity"
+            android:screenOrientation="sensorPortrait" />
 
     </application>
 

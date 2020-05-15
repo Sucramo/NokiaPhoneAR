@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.google.android.material.card.MaterialCardView android:id="@+id/card"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_margin="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,10 +16,9 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="194dp"
-            app:srcCompat="@drawable/abc_vector_test"
-            android:scaleType="centerCrop"
             android:contentDescription="something"
-            />
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/abc_vector_test" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,24 +31,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Title"
-                android:textAppearance="?attr/textAppearanceHeadline6"
-                />
+                android:textAppearance="?attr/textAppearanceHeadline6" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="secondary"
                 android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-                />
+                android:textColor="?android:attr/textColorSecondary" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="bully"
                 android:textAppearance="?attr/textAppearanceBody2"
-                android:textColor="?android:attr/textColorSecondary"
-                />
+                android:textColor="?android:attr/textColorSecondary" />
 
         </LinearLayout>
 
@@ -59,19 +57,19 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:orientation="horizontal">
+
             <com.google.android.material.button.MaterialButton
+                style="?attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
-                android:text="somethin"
-                style="?attr/borderlessButtonStyle"
-                />
+                android:text="somethin" />
+
             <com.google.android.material.button.MaterialButton
+                style="?attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="something"
-                style="?attr/borderlessButtonStyle"
-                />
+                android:text="something" />
         </LinearLayout>
 
     </LinearLayout>
