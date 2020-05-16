@@ -134,6 +134,30 @@ public class ImageClassifier {
         return textToShow;
     }
 
+    int confidenceLevel () {
+        if (tflite == null) {
+            return 0;
+        }
+
+        for (int i = 0; i < labelList.size(); ++i) {
+            sortedLabels.add(
+                    new AbstractMap.SimpleEntry<>(labelList.get(i), (float) labelProbArray[0][i]));
+            if (sortedLabels.size() > RESULTS_TO_SHOW) {
+                sortedLabels.poll();
+            }
+        }
+        int value = 0;
+        final int size = sortedLabels.size();
+        for (int i = 0; i < size; ++i) {
+            Map.Entry<String, Float> label = sortedLabels.poll();
+            value = label.getValue().intValue();
+            //System.out.println(value);
+        }
+
+
+        return value;
+    }
+
     void applyFilter() {
         int num_labels = labelList.size();
 

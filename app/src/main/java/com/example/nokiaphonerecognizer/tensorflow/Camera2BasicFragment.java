@@ -40,6 +40,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.legacy.app.FragmentCompat;
 
@@ -77,6 +78,7 @@ public class Camera2BasicFragment extends Fragment
     private boolean checkedPermissions = false;
     private TextView textView;
     private ImageClassifier classifier;
+    private CardView cardView;
 
     /**
      * Max preview width that is guaranteed by Camera2 API
@@ -320,6 +322,8 @@ public class Camera2BasicFragment extends Fragment
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         textureView = view.findViewById(R.id.texture);
         textView = view.findViewById(R.id.text);
+        cardView = view.findViewById(R.id.cardview);
+        cardView.setVisibility(View.GONE);
     }
 
     /**
@@ -329,6 +333,7 @@ public class Camera2BasicFragment extends Fragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         try {
+
             classifier = new ImageClassifier(getActivity());
         } catch (IOException e) {
             Log.e(TAG, "Failed to initialize an image classifier.");
@@ -592,13 +597,24 @@ public class Camera2BasicFragment extends Fragment
     /**
      * Takes photos and classify them periodically.
      */
-    private Runnable periodicClassify =
+    private final Runnable periodicClassify =
             new Runnable() {
                 @Override
                 public void run() {
                     synchronized (lock) {
                         if (runClassifier) {
                             classifyFrame();
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (getConfidenceValue() > 30) {
+                                        System.out.println("Over 20");
+                                        cardView.setVisibility(View.VISIBLE);
+                                    } else {
+                                        cardView.setVisibility(View.GONE);
+                                    }
+                                }
+                            });
                         }
                     }
                     backgroundHandler.post(periodicClassify);
@@ -710,6 +726,14 @@ public class Camera2BasicFragment extends Fragment
         String textToShow = classifier.classifyFrame(bitmap);
         bitmap.recycle();
         showToast(textToShow);
+    }
+
+    private int getConfidenceValue() {
+        if (classifier == null || getActivity() == null || cameraDevice == null) {
+            showToast("Uninitialized Classifier or invalid context.");
+            return 0;
+        }
+        return classifier.confidenceLevel();
     }
 
     /**
