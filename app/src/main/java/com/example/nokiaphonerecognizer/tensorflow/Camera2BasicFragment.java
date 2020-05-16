@@ -81,6 +81,11 @@ public class Camera2BasicFragment extends Fragment
     private CardView cardView;
 
     /**
+     * Change this to determine at which confidence value the phone should be classified
+     */
+    int confidenceThreshold = 40;
+
+    /**
      * Max preview width that is guaranteed by Camera2 API
      */
     private static final int MAX_PREVIEW_WIDTH = 1920;
@@ -607,7 +612,7 @@ public class Camera2BasicFragment extends Fragment
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    if (getConfidenceValue() > 30) {
+                                    if (getConfidenceValue() > confidenceThreshold) {
                                         System.out.println("Over 20");
                                         cardView.setVisibility(View.VISIBLE);
                                     } else {
