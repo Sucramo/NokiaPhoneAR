@@ -84,7 +84,7 @@ public class Camera2BasicFragment extends Fragment
     /**
      * Change this to determine at which confidence value the phone should be classified
      */
-    int confidenceThreshold = 40;
+    int confidenceThreshold = 35;
 
     /**
      * Max preview width that is guaranteed by Camera2 API
@@ -367,6 +367,7 @@ public class Camera2BasicFragment extends Fragment
         } else {
             textureView.setSurfaceTextureListener(surfaceTextureListener);
         }
+        textViewFindPhone.setVisibility(View.VISIBLE);
         textViewFindPhone.postDelayed(new Runnable() {
             public void run() {
                 textViewFindPhone.setVisibility(View.INVISIBLE);
@@ -379,7 +380,6 @@ public class Camera2BasicFragment extends Fragment
         closeCamera();
         stopBackgroundThread();
         super.onPause();
-        textViewFindPhone.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -736,7 +736,7 @@ public class Camera2BasicFragment extends Fragment
      */
     private void classifyFrame() {
         if (classifier == null || getActivity() == null || cameraDevice == null) {
-            showToast("Uninitialized Classifier or invalid context.");
+            showToast("");
             return;
         }
         Bitmap bitmap =
@@ -748,7 +748,6 @@ public class Camera2BasicFragment extends Fragment
 
     private int getConfidenceValue() {
         if (classifier == null || getActivity() == null || cameraDevice == null) {
-            showToast("Uninitialized Classifier or invalid context.");
             return 0;
         }
         return classifier.confidenceLevel();
