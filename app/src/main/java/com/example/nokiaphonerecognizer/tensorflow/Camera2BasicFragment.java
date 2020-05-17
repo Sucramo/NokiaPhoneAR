@@ -79,6 +79,7 @@ public class Camera2BasicFragment extends Fragment
     private TextView textView;
     private ImageClassifier classifier;
     private CardView cardView;
+    private TextView textViewFindPhone;
 
     /**
      * Change this to determine at which confidence value the phone should be classified
@@ -329,6 +330,12 @@ public class Camera2BasicFragment extends Fragment
         textView = view.findViewById(R.id.text);
         cardView = view.findViewById(R.id.cardview);
         cardView.setVisibility(View.GONE);
+        textViewFindPhone = view.findViewById(R.id.find_a_phone);
+        textViewFindPhone.postDelayed(new Runnable() {
+            public void run() {
+                textViewFindPhone.setVisibility(View.INVISIBLE);
+            }
+        }, 3000);
     }
 
     /**
@@ -360,6 +367,11 @@ public class Camera2BasicFragment extends Fragment
         } else {
             textureView.setSurfaceTextureListener(surfaceTextureListener);
         }
+        textViewFindPhone.postDelayed(new Runnable() {
+            public void run() {
+                textViewFindPhone.setVisibility(View.INVISIBLE);
+            }
+        }, 3000);
     }
 
     @Override
@@ -367,6 +379,7 @@ public class Camera2BasicFragment extends Fragment
         closeCamera();
         stopBackgroundThread();
         super.onPause();
+        textViewFindPhone.setVisibility(View.VISIBLE);
     }
 
     @Override
