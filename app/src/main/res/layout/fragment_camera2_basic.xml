@@ -12,6 +12,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true" />
 
+    <TextView
+        android:id="@+id/find_a_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/find_a_phone"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
     <ImageButton
         android:id="@+id/settings_button"
         style="?android:attr/borderlessButtonStyle"
