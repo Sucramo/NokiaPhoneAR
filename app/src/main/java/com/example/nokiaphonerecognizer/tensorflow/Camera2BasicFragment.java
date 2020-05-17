@@ -611,6 +611,9 @@ public class Camera2BasicFragment extends Fragment
             e.printStackTrace();
         }
     }
+    private String getPhoneModel() {
+        return classifier.phoneModel();
+    }
 
     /**
      * Takes photos and classify them periodically.
@@ -626,9 +629,12 @@ public class Camera2BasicFragment extends Fragment
                                 @Override
                                 public void run() {
                                     if (getConfidenceValue() > confidenceThreshold) {
-                                        System.out.println("Over 20");
+                                        System.out.println("Over " + confidenceThreshold);
+                                        System.out.println(getPhoneModel());
                                         cardView.setVisibility(View.VISIBLE);
                                     } else {
+                                        System.out.println("Under " + confidenceThreshold);
+                                        System.out.println(getPhoneModel());
                                         cardView.setVisibility(View.GONE);
                                     }
                                 }
