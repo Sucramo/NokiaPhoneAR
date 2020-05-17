@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.nokiaphonerecognizer.MoreInfoActivity;
 import com.example.nokiaphonerecognizer.R;
 
+import java.io.IOException;
+
 /**
  * Main {@code Activity} class for the Camera app.
  */
@@ -21,6 +23,7 @@ public class CameraActivity extends Activity {
     ImageButton flashButton;
     ImageButton settingsButton;
     Button moreInfoButton;
+    ImageClassifier classifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,14 @@ public class CameraActivity extends Activity {
         flashButton = (ImageButton) findViewById(R.id.flash_button);
         settingsButton = (ImageButton) findViewById(R.id.settings_button);
         moreInfoButton = (Button) findViewById(R.id.more_info);
+
+        {
+            try {
+                classifier = new ImageClassifier(this);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
 
         if (null == savedInstanceState) {
@@ -84,8 +95,17 @@ public class CameraActivity extends Activity {
         }
     }
 
+    private String getPhoneModel() {
+        System.out.println("gg" + classifier.phoneModel());
+        return classifier.phoneModel();
+    }
+
     public void moreInfoActivityOpener(View v) {
-        startActivity(new Intent(CameraActivity.this, MoreInfoActivity.class));
+        String extraString = "Nokia " + getPhoneModel();
+        Intent intent = new Intent(CameraActivity.this, MoreInfoActivity.class);
+        intent.putExtra("EXTRA_PHONE_MODEL", extraString);
+        startActivity(intent);
+
     }
 
 }

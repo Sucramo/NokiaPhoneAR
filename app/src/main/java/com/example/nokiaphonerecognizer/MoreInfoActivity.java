@@ -43,7 +43,8 @@ public class MoreInfoActivity extends Activity {
             }
         });
 
-        String modelId = "iPhone 4";
+        String modelId = getIntent().getStringExtra("EXTRA_PHONE_MODEL");
+        System.out.println("MoreInfo: " + modelId);
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Phones").child(modelId);
 

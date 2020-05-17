@@ -153,9 +153,25 @@ public class ImageClassifier {
             value = label.getValue().intValue();
             //System.out.println(value);
         }
-
-
         return value;
+    }
+
+    String phoneModel () {
+        for (int i = 0; i < labelList.size(); ++i) {
+            sortedLabels.add(
+                    new AbstractMap.SimpleEntry<>(labelList.get(i), (float) labelProbArray[0][i]));
+            if (sortedLabels.size() > RESULTS_TO_SHOW) {
+                sortedLabels.poll();
+            }
+        }
+        String name = "";
+        final int size = sortedLabels.size();
+        for (int i = 0; i < size; ++i) {
+            Map.Entry<String, Float> label = sortedLabels.poll();
+            name = label.getKey();
+            System.out.println("IMAGECLASSIFIER: " + name);
+        }
+        return name;
     }
 
     void applyFilter() {
