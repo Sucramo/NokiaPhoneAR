@@ -24,6 +24,7 @@ public class CameraActivity extends Activity {
     ImageButton settingsButton;
     Button moreInfoButton;
     ImageClassifier classifier;
+    public static String global_phone_model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,13 +96,8 @@ public class CameraActivity extends Activity {
         }
     }
 
-    private String getPhoneModel() {
-        System.out.println("gg" + classifier.phoneModel());
-        return classifier.phoneModel();
-    }
-
     public void moreInfoActivityOpener(View v) {
-        String extraString = "Nokia " + getPhoneModel();
+        String extraString = "Nokia " + global_phone_model;
         Intent intent = new Intent(CameraActivity.this, MoreInfoActivity.class);
         intent.putExtra("EXTRA_PHONE_MODEL", extraString);
         startActivity(intent);
