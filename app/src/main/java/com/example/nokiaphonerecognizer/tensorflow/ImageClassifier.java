@@ -116,7 +116,7 @@ public class ImageClassifier {
      */
     String classifyFrame(Bitmap bitmap) {
         if (tflite == null) {
-            return "Uninitialized Classifier.";
+            return "";
         }
         convertBitmapToByteBuffer(bitmap);
         // Here's where the magic happens!!!
