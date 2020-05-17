@@ -169,7 +169,6 @@ public class ImageClassifier {
         for (int i = 0; i < size; ++i) {
             Map.Entry<String, Float> label = sortedLabels.poll();
             name = label.getKey();
-            System.out.println("IMAGECLASSIFIER: " + name);
         }
         return name;
     }

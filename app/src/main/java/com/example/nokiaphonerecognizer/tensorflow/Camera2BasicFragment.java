@@ -629,12 +629,11 @@ public class Camera2BasicFragment extends Fragment
                                 @Override
                                 public void run() {
                                     if (getConfidenceValue() > confidenceThreshold) {
-                                        System.out.println("Over " + confidenceThreshold);
-                                        System.out.println(getPhoneModel());
+                                        System.out.println("There's a " + getConfidenceValue() + "% chance that it's a Nokia " + getPhoneModel());
                                         cardView.setVisibility(View.VISIBLE);
+                                        CameraActivity.global_phone_model = getPhoneModel();
                                     } else {
-                                        System.out.println("Under " + confidenceThreshold);
-                                        System.out.println(getPhoneModel());
+                                        System.out.println("There's a " + getConfidenceValue() + "% chance that it's a Nokia " + getPhoneModel());
                                         cardView.setVisibility(View.GONE);
                                     }
                                 }
