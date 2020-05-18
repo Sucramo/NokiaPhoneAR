@@ -29,7 +29,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:onClick="showPopup"
-        android:src="@drawable/ic_more_vert_black_24dp" />
+        android:src="@drawable/ic_more_vert_black_24dp"
+        android:visibility="gone"/>
 
     <ImageButton
         android:id="@+id/flash_button"
@@ -72,10 +73,10 @@
                 android:layout_below="@id/text"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/ripple_effect"
                 android:onClick="moreInfoActivityOpener"
                 android:text="@string/button_more_info"
-                android:textColor="@color/white" />
+                android:background="@null"
+                android:textColor="@color/colorPrimaryDark" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

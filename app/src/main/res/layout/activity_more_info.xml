@@ -55,8 +55,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/ripple_effect"
         android:text="Ok"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:textColor="@color/white" />
 
 
