@@ -4,6 +4,13 @@ import android.app.Activity;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
+import android.util.Log;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.tensorflow.lite.Interpreter;
 
@@ -21,6 +28,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
+
+import androidx.annotation.NonNull;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 /**
  * Classifies images with Tensorflow Lite.
@@ -112,28 +123,30 @@ public class ImageClassifier {
     }
 
     /**
-     * Classifies a frame from the preview stream.
+     * Classifies a frame from the preview stream and returns the string to show in the ui.
      */
     String classifyFrame(Bitmap bitmap) {
         if (tflite == null) {
             return "";
         }
         convertBitmapToByteBuffer(bitmap);
-        // Here's where the magic happens!!!
-        long startTime = SystemClock.uptimeMillis();
+        // Run the model
         tflite.run(imgData, labelProbArray);
-        long endTime = SystemClock.uptimeMillis();
 
         // smooth the results
         applyFilter();
 
-        // print the results
-        String textToShow = printTopKLabels();
+        //Set fireBaseName-variable based on phone label
+        setFireBaseName(phoneModel());
+        // Return the text to show in the UI
+        String textToShow = fireBaseName + " (" + confidenceLevel() + "%)";
 
-        //textToShow = Long.toString(endTime - startTime) + "ms" + textToShow;
         return textToShow;
     }
 
+    /**
+     * Method that returns the confidence level of the classifier
+     */
     int confidenceLevel () {
         if (tflite == null) {
             return 0;
@@ -151,11 +164,13 @@ public class ImageClassifier {
         for (int i = 0; i < size; ++i) {
             Map.Entry<String, Float> label = sortedLabels.poll();
             value = label.getValue().intValue();
-            //System.out.println(value);
         }
         return value;
     }
 
+    /**
+     * Method that returns the label of the phone
+     */
     String phoneModel () {
         for (int i = 0; i < labelList.size(); ++i) {
             sortedLabels.add(
@@ -172,6 +187,29 @@ public class ImageClassifier {
         }
         return name;
     }
+
+    /**
+     * Method that set the variable fireBaseName depending on the classified phone label
+     */
+    private static String fireBaseName = "";
+     private void setFireBaseName(String label) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = database.getReference("Phones");
+
+        // Read from the database
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                fireBaseName = dataSnapshot.child(label).child("Model name").getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+    };
 
     void applyFilter() {
         int num_labels = labelList.size();
@@ -190,7 +228,6 @@ public class ImageClassifier {
 
             }
         }
-
         // Copy the last stage filter output back to `labelProbArray`.
         for (int j = 0; j < num_labels; ++j) {
             labelProbArray[0][j] = filterLabelProbArray[FILTER_STAGES - 1][j];
@@ -244,7 +281,6 @@ public class ImageClassifier {
         bitmap.getPixels(intValues, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
         // Convert the image to floating point.
         int pixel = 0;
-        long startTime = SystemClock.uptimeMillis();
         for (int i = 0; i < DIM_IMG_SIZE_X; ++i) {
             for (int j = 0; j < DIM_IMG_SIZE_Y; ++j) {
                 final int val = intValues[pixel++];
@@ -253,26 +289,5 @@ public class ImageClassifier {
                 imgData.put((byte) ((((val) & 0xFF) - IMAGE_MEAN) / IMAGE_STD));
             }
         }
-        long endTime = SystemClock.uptimeMillis();
-    }
-
-    /**
-     * Prints top-K labels, to be shown in UI as the results.
-     */
-    private String printTopKLabels() {
-        for (int i = 0; i < labelList.size(); ++i) {
-            sortedLabels.add(
-                    new AbstractMap.SimpleEntry<>(labelList.get(i), (float) labelProbArray[0][i]));
-            if (sortedLabels.size() > RESULTS_TO_SHOW) {
-                sortedLabels.poll();
-            }
-        }
-        String textToShow = "%";
-        final int size = sortedLabels.size();
-        for (int i = 0; i < size; ++i) {
-            Map.Entry<String, Float> label = sortedLabels.poll();
-            textToShow = "Nokia " + label.getKey() + " (" + label.getValue() + "%)";
-        }
-        return textToShow;
     }
 }
