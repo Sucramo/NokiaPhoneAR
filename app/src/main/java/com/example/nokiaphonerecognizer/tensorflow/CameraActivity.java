@@ -97,7 +97,7 @@ public class CameraActivity extends Activity {
     }
 
     public void moreInfoActivityOpener(View v) {
-        String extraString = "Nokia " + global_phone_model;
+        String extraString = global_phone_model;
         Intent intent = new Intent(CameraActivity.this, MoreInfoActivity.class);
         intent.putExtra("EXTRA_PHONE_MODEL", extraString);
         startActivity(intent);
