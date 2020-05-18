@@ -5,6 +5,7 @@ import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -104,7 +105,12 @@ public class ImageClassifier {
                     new Comparator<Map.Entry<String, Float>>() {
                         @Override
                         public int compare(Map.Entry<String, Float> o1, Map.Entry<String, Float> o2) {
-                            return (o1.getValue()).compareTo(o2.getValue());
+                            try {
+                                return (o1.getValue()).compareTo(o2.getValue());
+                            } catch (Exception e){
+                                e.printStackTrace();
+                                return 0;
+                            }
                         }
                     });
 
@@ -183,7 +189,11 @@ public class ImageClassifier {
         final int size = sortedLabels.size();
         for (int i = 0; i < size; ++i) {
             Map.Entry<String, Float> label = sortedLabels.poll();
-            name = label.getKey();
+            try {
+                name = label.getKey();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
         return name;
     }

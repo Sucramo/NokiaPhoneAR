@@ -54,12 +54,16 @@ public class MoreInfoActivity extends Activity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
-                String stringModelName = dataSnapshot.child("Model name").getValue(String.class);
-                textViewModelName.append(stringModelName);
-                String stringReleaseDate = dataSnapshot.child("Release date").getValue(String.class);
-                textViewReleaseDate.append("Released " + stringReleaseDate);
-                String stringBodyText = dataSnapshot.child("Description").getValue(String.class);
-                textViewBodyText.append(stringBodyText);
+                try {
+                    String stringModelName = dataSnapshot.child("Model name").getValue(String.class);
+                    textViewModelName.append(stringModelName);
+                    String stringReleaseDate = dataSnapshot.child("Release date").getValue(String.class);
+                    textViewReleaseDate.append("Released " + stringReleaseDate);
+                    String stringBodyText = dataSnapshot.child("Description").getValue(String.class);
+                    textViewBodyText.append(stringBodyText);
+                } catch (NullPointerException e){
+                    e.printStackTrace();
+                }
 
             }
 
