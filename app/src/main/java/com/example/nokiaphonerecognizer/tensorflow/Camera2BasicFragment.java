@@ -237,7 +237,7 @@ public class Camera2BasicFragment extends Fragment
      *
      * @param text The message to show
      */
-    private void showToast(final String text) {
+    private void setPhoneNameInUI(final String text) {
         final Activity activity = getActivity();
         if (activity != null) {
             activity.runOnUiThread(
@@ -611,6 +611,7 @@ public class Camera2BasicFragment extends Fragment
             e.printStackTrace();
         }
     }
+
     private String getPhoneModel() {
         return classifier.phoneModel();
     }
@@ -693,7 +694,7 @@ public class Camera2BasicFragment extends Fragment
 
                         @Override
                         public void onConfigureFailed(@NonNull CameraCaptureSession cameraCaptureSession) {
-                            showToast("Failed");
+                            setPhoneNameInUI("Failed");
                         }
                     },
                     null);
@@ -741,14 +742,14 @@ public class Camera2BasicFragment extends Fragment
      */
     private void classifyFrame() {
         if (classifier == null || getActivity() == null || cameraDevice == null) {
-            showToast("");
+            setPhoneNameInUI("");
             return;
         }
         Bitmap bitmap =
                 textureView.getBitmap(ImageClassifier.DIM_IMG_SIZE_X, ImageClassifier.DIM_IMG_SIZE_Y);
         String textToShow = classifier.classifyFrame(bitmap);
         bitmap.recycle();
-        showToast(textToShow);
+        setPhoneNameInUI(textToShow);
     }
 
     private int getConfidenceValue() {
