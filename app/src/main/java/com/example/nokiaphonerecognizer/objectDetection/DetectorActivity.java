@@ -202,8 +202,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 mappedRecognitions.add(result);
 
                                 recognizedPhonesList.add(result.getTitle());
-                                phone_title_array = recognizedPhonesList;
                             }
+                            phone_title_array = recognizedPhonesList;
                         }
 
                         tracker.trackResults(mappedRecognitions, currTimestamp);

@@ -12,6 +12,15 @@
         android:layout_height="match_parent"
         tools:context=".objectDetection.CameraActivity" />
 
+    <TextView
+        android:id="@+id/find_a_phone_od"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/find_a_phone"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
 
 </RelativeLayout>
 
