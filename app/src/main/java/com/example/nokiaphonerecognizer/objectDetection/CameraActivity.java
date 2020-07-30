@@ -45,6 +45,7 @@ import com.example.nokiaphonerecognizer.objectDetection.tflite.Classifier;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
 
 public abstract class CameraActivity extends AppCompatActivity
         implements OnImageAvailableListener,
@@ -69,20 +70,11 @@ public abstract class CameraActivity extends AppCompatActivity
     private Runnable postInferenceCallback;
     private Runnable imageConverter;
 
-    private LinearLayout bottomSheetLayout;
-    private LinearLayout gestureLayout;
-    private BottomSheetBehavior<LinearLayout> sheetBehavior;
-
-    protected TextView frameValueTextView, cropValueTextView, inferenceTimeTextView;
-    protected ImageView bottomSheetArrowImageView;
-    private ImageView plusImageView, minusImageView;
     private SwitchCompat apiSwitchCompat;
-    private TextView threadsTextView;
-    private Classifier classifier;
+
     Button moreInfoButton;
-    DetectorActivity detectorActivity;
-    public static String global_phone_title;
-    TextView phoneTextView;
+
+    public static ArrayList phone_title_array;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -103,9 +95,11 @@ public abstract class CameraActivity extends AppCompatActivity
     }
 
     public void multiplePhonesInfoActivityOpener(View v) {
-        String extraString = global_phone_title;
+        ArrayList extraArrayList = phone_title_array;
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("phones", extraArrayList);
         Intent intent = new Intent(com.example.nokiaphonerecognizer.objectDetection.CameraActivity.this, MultiplePhonesInfo.class);
-        intent.putExtra("EXTRA_PHONE_MODELS", extraString);
+        intent.putExtra("EXTRA_PHONE_ARRAY", bundle);
         startActivity(intent);
 
     }

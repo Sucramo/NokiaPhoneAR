@@ -187,11 +187,12 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
 
                         final List<Classifier.Recognition> mappedRecognitions =
                                 new LinkedList<Classifier.Recognition>();
+
                         ArrayList recognizedPhonesList = new ArrayList();
+                        recognizedPhonesList.clear();
 
                         for (final Classifier.Recognition result : results) {
                             final RectF location = result.getLocation();
-                            recognizedPhonesList.add(result.getTitle());
                             if (location != null && result.getConfidence() >= minimumConfidence) {
                                 canvas.drawRect(location, paint);
 
@@ -200,8 +201,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                                 result.setLocation(location);
                                 mappedRecognitions.add(result);
 
-                                //This sets
-                                global_phone_title = recognizedPhonesList.toString();
+                                recognizedPhonesList.add(result.getTitle());
+                                phone_title_array = recognizedPhonesList;
                             }
                         }
 
