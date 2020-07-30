@@ -73,6 +73,7 @@ public abstract class CameraActivity extends AppCompatActivity
     private SwitchCompat apiSwitchCompat;
 
     Button moreInfoButton;
+    TextView textViewFindPhoneOD;
 
     public static ArrayList phone_title_array;
 
@@ -90,17 +91,32 @@ public abstract class CameraActivity extends AppCompatActivity
         } else {
             requestPermission();
         }
+        textViewFindPhoneOD = (TextView) findViewById(R.id.find_a_phone_od);
+        textViewFindPhoneOD.postDelayed(new Runnable() {
+            public void run() {
+                textViewFindPhoneOD.setVisibility(View.INVISIBLE);
+            }
+        }, 3000);
 
 
     }
 
     public void multiplePhonesInfoActivityOpener(View v) {
-        ArrayList extraArrayList = phone_title_array;
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("phones", extraArrayList);
-        Intent intent = new Intent(com.example.nokiaphonerecognizer.objectDetection.CameraActivity.this, MultiplePhonesInfo.class);
-        intent.putExtra("EXTRA_PHONE_ARRAY", bundle);
-        startActivity(intent);
+        if (phone_title_array.size() != 0) {
+            ArrayList extraArrayList = phone_title_array;
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("phones", extraArrayList);
+            Intent intent = new Intent(com.example.nokiaphonerecognizer.objectDetection.CameraActivity.this, MultiplePhonesInfo.class);
+            intent.putExtra("EXTRA_PHONE_ARRAY", bundle);
+            startActivity(intent);
+        } else {
+            textViewFindPhoneOD.setVisibility(View.VISIBLE);
+            textViewFindPhoneOD.postDelayed(new Runnable() {
+                public void run() {
+                    textViewFindPhoneOD.setVisibility(View.INVISIBLE);
+                }
+            }, 3000);
+        }
 
     }
 
