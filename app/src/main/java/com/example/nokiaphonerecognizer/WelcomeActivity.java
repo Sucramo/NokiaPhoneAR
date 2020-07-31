@@ -1,11 +1,14 @@
 package com.example.nokiaphonerecognizer;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,9 +21,14 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.nokiaphonerecognizer.tensorflow.CameraActivity;
+import com.example.nokiaphonerecognizer.objectDetection.CameraActivity;
+import com.example.nokiaphonerecognizer.objectDetection.DetectorActivity;
 
+/**
+ * This Activity is only shown at a first time launch. It also makes sure the camera permission is granted before accessing the DetectorActivity
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
@@ -31,6 +39,11 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button btnSkip, btnNext;
     private PrefManager prefManager;
 
+    private static final int PERMISSIONS_REQUEST = 1;
+
+    private static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +91,7 @@ public class WelcomeActivity extends AppCompatActivity {
         });
 
         btnNext.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onClick(View v) {
                 // checking for last page
@@ -116,10 +130,51 @@ public class WelcomeActivity extends AppCompatActivity {
         return viewPager.getCurrentItem() + i;
     }
 
+    /**
+     * Launches the home screen
+     */
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void launchHomeScreen() {
-        prefManager.setFirstTimeLaunch(false);
-        startActivity(new Intent(WelcomeActivity.this, CameraActivity.class));
-        finish();
+        if (CameraPermissionGranted() == false){
+            Toast.makeText(
+                    WelcomeActivity.this,
+                    "Camera permission is required to use this application",
+                    Toast.LENGTH_LONG)
+                    .show();
+            requestPermission();
+        } else {
+            prefManager.setFirstTimeLaunch(false);
+            startActivity(new Intent(WelcomeActivity.this, DetectorActivity.class));
+            finish();
+        }
+    }
+
+    /**
+     * Checks if the camera persmision is granted
+     * @return false if it is not
+     */
+    private boolean CameraPermissionGranted(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return checkSelfPermission(PERMISSION_CAMERA) == PackageManager.PERMISSION_GRANTED;
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * Requests the camera permission
+     */
+    private void requestPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (shouldShowRequestPermissionRationale(PERMISSION_CAMERA)) {
+                Toast.makeText(
+                        WelcomeActivity.this,
+                        "Camera permission is required to use this application",
+                        Toast.LENGTH_LONG)
+                        .show();
+            }
+            requestPermissions(new String[]{PERMISSION_CAMERA}, PERMISSIONS_REQUEST);
+        }
     }
 
     //  viewpager change listener
