@@ -28,6 +28,7 @@ public class MultiplePhonesInfo extends Activity {
     Adapter adapter;
     ArrayList<String> phonesExtra;
     ArrayList<String> dataBasePhoneNames;
+    ArrayList<String> dataBaseReleases;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class MultiplePhonesInfo extends Activity {
         databaseReference = database.getReference("Phones");
 
         dataBasePhoneNames = new ArrayList<>();
+        dataBaseReleases = new ArrayList<>();
 
         // Read from the database
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -48,6 +50,7 @@ public class MultiplePhonesInfo extends Activity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (int i = 0; i < phonesExtra.size(); i++) {
                     dataBasePhoneNames.add(dataSnapshot.child(phonesExtra.get(i)).child("Model name").getValue(String.class));
+                    dataBaseReleases.add(dataSnapshot.child(phonesExtra.get(i)).child("Release date").getValue(String.class));
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -66,7 +69,7 @@ public class MultiplePhonesInfo extends Activity {
 
     private void setupListRecyclerView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new Adapter(this, dataBasePhoneNames);
+        adapter = new Adapter(this, dataBasePhoneNames, dataBaseReleases);
         recyclerView.setAdapter(adapter);
     }
 }

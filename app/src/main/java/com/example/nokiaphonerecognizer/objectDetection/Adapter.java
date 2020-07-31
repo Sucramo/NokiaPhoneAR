@@ -16,13 +16,15 @@ import androidx.recyclerview.widget.RecyclerView;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private LayoutInflater layoutInflater;
-    private List<String> data;
+    private List<String> titles;
+    private List<String> releases;
 
 
 
-    Adapter(Context context, List<String> data) {
+    Adapter(Context context, List<String> titles, List<String> releases) {
         this.layoutInflater = LayoutInflater.from(context);
-        this.data = data;
+        this.titles = titles;
+        this.releases = releases;
 
     }
 
@@ -36,23 +38,27 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        String title = data.get(position);
+        String title = titles.get(position);
         holder.phoneTitle.setText(title);
+
+        String release = releases.get(position);
+        holder.releaseDate.setText(String.format("Released: %s", release));
 
     }
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return titles.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView phoneTitle;
+        TextView phoneTitle, releaseDate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             phoneTitle = itemView.findViewById(R.id.phone_title);
+            releaseDate = itemView.findViewById(R.id.released);
         }
     }
 }
