@@ -4,8 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.nokiaphonerecognizer.R;
 
 import java.util.List;
@@ -18,13 +20,17 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private LayoutInflater layoutInflater;
     private List<String> titles;
     private List<String> releases;
+    private List<String> imageURLs;
+    private Context context;
 
 
 
-    Adapter(Context context, List<String> titles, List<String> releases) {
+    Adapter(Context context, List<String> titles, List<String> releases, List<String> imageURLs) {
         this.layoutInflater = LayoutInflater.from(context);
         this.titles = titles;
         this.releases = releases;
+        this.imageURLs = imageURLs;
+        this.context = context;
 
     }
 
@@ -44,6 +50,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         String release = releases.get(position);
         holder.releaseDate.setText(String.format("Released: %s", release));
 
+        ImageView imageView = ((ViewHolder) holder).image;
+
+        String imageURL = imageURLs.get(position);
+
+        Glide.with(context)
+                .load(imageURL)
+                .into(imageView);
+
+
     }
 
     @Override
@@ -54,11 +69,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView phoneTitle, releaseDate;
+        ImageView image;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             phoneTitle = itemView.findViewById(R.id.phone_title);
             releaseDate = itemView.findViewById(R.id.released);
+            image = itemView.findViewById(R.id.imageView);
+
         }
     }
 }
