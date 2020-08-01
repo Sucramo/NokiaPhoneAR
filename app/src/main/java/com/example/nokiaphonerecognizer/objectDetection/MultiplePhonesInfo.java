@@ -3,9 +3,12 @@ package com.example.nokiaphonerecognizer.objectDetection;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.nokiaphonerecognizer.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,12 +18,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class MultiplePhonesInfo extends Activity {
+public class MultiplePhonesInfo extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 
@@ -34,6 +38,14 @@ public class MultiplePhonesInfo extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.activity_multiple_phones_info);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         Bundle extra = getIntent().getBundleExtra("EXTRA_PHONE_ARRAY");
         phonesExtra = (ArrayList<String>) extra.getSerializable("phones");
@@ -72,4 +84,5 @@ public class MultiplePhonesInfo extends Activity {
         adapter = new Adapter(this, dataBasePhoneNames, dataBaseReleases);
         recyclerView.setAdapter(adapter);
     }
+
 }
