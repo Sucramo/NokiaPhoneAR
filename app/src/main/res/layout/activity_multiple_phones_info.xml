@@ -11,21 +11,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:layout_marginTop="60dp"
+        android:layout_below="@id/floatingActionButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@null"
-        android:contentDescription="@string/back_button"
-        app:srcCompat="@drawable/ic_back_arrow" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
