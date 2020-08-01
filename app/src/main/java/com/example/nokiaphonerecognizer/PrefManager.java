@@ -3,6 +3,9 @@ package com.example.nokiaphonerecognizer;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+/**
+ * Checks if it is a first time launch of the application
+ */
 public class PrefManager {
     SharedPreferences pref;
     SharedPreferences.Editor editor;

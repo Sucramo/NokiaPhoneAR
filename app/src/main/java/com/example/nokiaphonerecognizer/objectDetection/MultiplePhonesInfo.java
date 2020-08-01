@@ -5,13 +5,22 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+
 import android.widget.ImageView;
+
+import android.view.View;
+
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.nokiaphonerecognizer.R;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,12 +37,13 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class MultiplePhonesInfo extends Activity {
+public class MultiplePhonesInfo extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private StorageReference storageReference;
@@ -52,8 +62,15 @@ public class MultiplePhonesInfo extends Activity {
         setContentView(R.layout.activity_multiple_phones_info);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
 
-        storageReference = FirebaseStorage.getInstance().getReference("image/2300.jpg");
-        imageView = findViewById(R.id.imageView2);
+
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
         Bundle extra = getIntent().getBundleExtra("EXTRA_PHONE_ARRAY");
         phonesExtra = (ArrayList<String>) extra.getSerializable("phones");
@@ -102,4 +119,5 @@ public class MultiplePhonesInfo extends Activity {
         adapter = new Adapter(this, dataBasePhoneNames, dataBaseReleases, dataBaseImageURLs);
         recyclerView.setAdapter(adapter);
     }
+
 }

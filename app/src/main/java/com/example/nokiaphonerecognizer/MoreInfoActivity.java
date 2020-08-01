@@ -17,6 +17,9 @@ import androidx.annotation.Nullable;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
+/**
+ * Displays the information of the found Nokia phones in the DetectorActivity
+ */
 public class MoreInfoActivity extends Activity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
