@@ -13,5 +13,8 @@
     <string name="find_a_phone">FIND A PHONE</string>
     <string name="tfe_od_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
 
+    <string name="welcome_slide3_title">Using the application</string>
+    <string name="welcome_slide3_text">This application recognizes Nokia phones using only your camera. When one or multiple phones are recognized, the app shows you a box around the recognized phone.</string>
+
 
 </resources>
