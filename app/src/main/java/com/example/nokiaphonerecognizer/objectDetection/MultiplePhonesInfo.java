@@ -1,41 +1,22 @@
 package com.example.nokiaphonerecognizer.objectDetection;
 
-import android.app.Activity;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
-import android.widget.ImageView;
-
 import android.view.View;
 
-import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
 import com.example.nokiaphonerecognizer.R;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FileDownloadTask;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,10 +27,6 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 public class MultiplePhonesInfo extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-    private StorageReference storageReference;
-    private StorageReference mStorageRef;
-
-    ImageView imageView;
     RecyclerView recyclerView;
     Adapter adapter;
     ArrayList<String> phonesExtra;
@@ -82,10 +59,6 @@ public class MultiplePhonesInfo extends AppCompatActivity {
         dataBaseReleases = new ArrayList<>();
         dataBaseImageURLs = new ArrayList<>();
 
-        /*Glide.with(this)
-                .load("https://firebasestorage.googleapis.com/v0/b/imagerecog-271511.appspot.com/o/image%2F2300.jpg?alt=media&token=a95ec8a8-c876-4f4a-a6c1-663c485fdba7")
-                .into(imageView);
-*/
         // Read from the database
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
