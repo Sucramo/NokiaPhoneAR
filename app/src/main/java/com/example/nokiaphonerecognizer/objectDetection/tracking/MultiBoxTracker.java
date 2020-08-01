@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.util.Pair;
 import android.util.TypedValue;
 
+import com.example.nokiaphonerecognizer.R;
 import com.example.nokiaphonerecognizer.objectDetection.env.BorderedText;
 import com.example.nokiaphonerecognizer.objectDetection.env.ImageUtils;
 import com.example.nokiaphonerecognizer.objectDetection.env.Logger;
@@ -31,6 +32,15 @@ public class MultiBoxTracker {
     private static final float TEXT_SIZE_DIP = 18;
     private static final float MIN_SIZE = 16.0f;
     private static final int[] COLORS = {
+            Color.parseColor("#6200EE"),
+            Color.parseColor("#6200EE"),
+            Color.parseColor("#6200EE"),
+            Color.parseColor("#6200EE"),
+            Color.parseColor("#6200EE"),
+            Color.parseColor("#6200EE"),
+            Color.parseColor("#6200EE"),
+            Color.parseColor("#6200EE")
+            /*
             Color.BLUE,
             Color.RED,
             Color.GREEN,
@@ -46,6 +56,7 @@ public class MultiBoxTracker {
             Color.parseColor("#55AAAA"),
             Color.parseColor("#AA33AA"),
             Color.parseColor("#0D0068")
+            */
     };
     final List<Pair<Float, RectF>> screenRects = new LinkedList<Pair<Float, RectF>>();
     private final Logger logger = new Logger();
