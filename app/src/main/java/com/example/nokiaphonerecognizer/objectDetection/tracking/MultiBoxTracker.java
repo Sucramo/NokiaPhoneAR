@@ -147,9 +147,10 @@ public class MultiBoxTracker {
 
             final String labelString =
                     !TextUtils.isEmpty(recognition.title)
-                            ? String.format("%s %.0f", "Nokia " + recognition.title, (100 * recognition.detectionConfidence))
-                            : String.format("%.2f", (""));
+                            ? String.format("%s", "Nokia " + recognition.title, (100 * recognition.detectionConfidence))
+                            : String.format("", (""));
                             // inclusion of the percentage sign for testing purposes
+                            //? String.format("%s %.0f", "Nokia " + recognition.title, (100 * recognition.detectionConfidence))
                             //: String.format("%.2f", (100 * recognition.detectionConfidence));
             //            borderedText.drawText(canvas, trackedPos.left + cornerSize, trackedPos.top,
             // labelString);
