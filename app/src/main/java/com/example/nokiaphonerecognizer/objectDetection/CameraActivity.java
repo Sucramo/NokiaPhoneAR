@@ -46,6 +46,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public abstract class CameraActivity extends AppCompatActivity
         implements OnImageAvailableListener,
@@ -76,9 +77,13 @@ public abstract class CameraActivity extends AppCompatActivity
     TextView textViewFindPhoneOD;
 
     public static ArrayList phone_title_array;
+    public static long start_time = 0;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
+        //this starts a timer
+        start_time = Calendar.getInstance().getTimeInMillis();
+
         LOGGER.d("onCreate " + this);
         super.onCreate(null);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

@@ -137,11 +137,13 @@ public class WelcomeActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void launchHomeScreen() {
         if (CameraPermissionGranted() == false){
+            /*
             Toast.makeText(
                     WelcomeActivity.this,
                     "Camera permission is required to use this application",
                     Toast.LENGTH_LONG)
                     .show();
+            */
             requestPermission();
         } else {
             prefManager.setFirstTimeLaunch(false);
@@ -168,11 +170,13 @@ public class WelcomeActivity extends AppCompatActivity {
     private void requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (shouldShowRequestPermissionRationale(PERMISSION_CAMERA)) {
+                /*
                 Toast.makeText(
                         WelcomeActivity.this,
                         "Camera permission is required to use this application",
                         Toast.LENGTH_LONG)
                         .show();
+                 */
             }
             requestPermissions(new String[]{PERMISSION_CAMERA}, PERMISSIONS_REQUEST);
         }

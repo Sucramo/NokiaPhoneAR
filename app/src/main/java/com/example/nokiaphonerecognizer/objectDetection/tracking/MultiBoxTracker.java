@@ -15,11 +15,13 @@ import android.util.Pair;
 import android.util.TypedValue;
 
 import com.example.nokiaphonerecognizer.R;
+import com.example.nokiaphonerecognizer.objectDetection.CameraActivity;
 import com.example.nokiaphonerecognizer.objectDetection.env.BorderedText;
 import com.example.nokiaphonerecognizer.objectDetection.env.ImageUtils;
 import com.example.nokiaphonerecognizer.objectDetection.env.Logger;
 import com.example.nokiaphonerecognizer.objectDetection.tflite.Classifier.Recognition;
 
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -114,7 +116,7 @@ public class MultiBoxTracker {
     }
 
     public synchronized void trackResults(final List<Recognition> results, final long timestamp) {
-        logger.i("Processing %d results from %d", results.size(), timestamp);
+        //logger.i("Processing %d results from %d", results.size(), timestamp);
         processResults(results);
     }
 
@@ -122,6 +124,7 @@ public class MultiBoxTracker {
         return frameToCanvasMatrix;
     }
 
+    int i = 0;
     public synchronized void draw(final Canvas canvas) {
         final boolean rotated = sensorOrientation % 180 == 90;
         final float multiplier =
@@ -154,6 +157,8 @@ public class MultiBoxTracker {
                             //: String.format("%.2f", (100 * recognition.detectionConfidence));
             //            borderedText.drawText(canvas, trackedPos.left + cornerSize, trackedPos.top,
             // labelString);
+            i++;
+            System.out.println("Detection " + i + ": " + labelString + " Detection Time: " + (Calendar.getInstance().getTimeInMillis() - CameraActivity.start_time));
             borderedText.drawText(
                     canvas, trackedPos.left + cornerSize, trackedPos.top, labelString + "", boxPaint);
         }
