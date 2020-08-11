@@ -158,7 +158,8 @@ public class MultiBoxTracker {
             //            borderedText.drawText(canvas, trackedPos.left + cornerSize, trackedPos.top,
             // labelString);
             i++;
-            System.out.println("Detection " + i + ": " + labelString + " Detection Time: " + (Calendar.getInstance().getTimeInMillis() - CameraActivity.start_time));
+            //Un-comment this if you want to test for precision / latency
+            //System.out.println("Detection " + i + ": " + labelString + " Detection Time: " + (Calendar.getInstance().getTimeInMillis() - CameraActivity.start_time));
             borderedText.drawText(
                     canvas, trackedPos.left + cornerSize, trackedPos.top, labelString + "", boxPaint);
         }

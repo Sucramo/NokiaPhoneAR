@@ -205,6 +205,8 @@ public class DetectorActivity extends CameraActivity implements OnImageAvailable
                             }
                             phone_title_array = recognizedPhonesList;
                         }
+                        //Un-comment if you wanna test for recall
+                        //System.out.println("Recognized: " + recognizedPhonesList);
 
                         tracker.trackResults(mappedRecognitions, currTimestamp);
                         trackingOverlay.postInvalidate();
