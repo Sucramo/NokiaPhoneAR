@@ -1,7 +1,9 @@
 package com.example.nokiaphonerecognizer;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -40,6 +42,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private PrefManager prefManager;
 
     private static final int PERMISSIONS_REQUEST = 1;
+    private static final int PERMISSION_REQUEST_CAMERA = 0;
 
     private static final String PERMISSION_CAMERA = Manifest.permission.CAMERA;
 
@@ -102,7 +105,8 @@ public class WelcomeActivity extends AppCompatActivity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
-                    launchHomeScreen();
+                    requestPermission();
+                    //launchHomeScreen();
                 }
             }
         });
@@ -122,7 +126,6 @@ public class WelcomeActivity extends AppCompatActivity {
             dots[i].setTextColor(colorsInactive[currentPage]);
             dotsLayout.addView(dots[i]);
         }
-
         if (dots.length > 0)
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
@@ -136,50 +139,61 @@ public class WelcomeActivity extends AppCompatActivity {
      */
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void launchHomeScreen() {
-        if (CameraPermissionGranted() == false){
-            /*
-            Toast.makeText(
-                    WelcomeActivity.this,
-                    "Camera permission is required to use this application",
-                    Toast.LENGTH_LONG)
-                    .show();
-            */
-            requestPermission();
-        } else {
-            prefManager.setFirstTimeLaunch(false);
-            startActivity(new Intent(WelcomeActivity.this, DetectorActivity.class));
-            finish();
-        }
+        prefManager.setFirstTimeLaunch(false);
+        startActivity(new Intent(WelcomeActivity.this, DetectorActivity.class));
+        finish();
+
     }
 
-    /**
-     * Checks if the camera persmision is granted
-     * @return false if it is not
-     */
-    private boolean CameraPermissionGranted(){
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return checkSelfPermission(PERMISSION_CAMERA) == PackageManager.PERMISSION_GRANTED;
-        } else {
-            return true;
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        // BEGIN_INCLUDE(onRequestPermissionsResult)
+        if (requestCode == PERMISSION_REQUEST_CAMERA) {
+            // Request for camera permission.
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //Permission granted
+                launchHomeScreen();
+            } else if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_DENIED){
+                // Permission request was denied
+                showInContextUI();
+            }
         }
+        // END_INCLUDE(onRequestPermissionsResult)
+    }
+
+    private void showInContextUI(){
+        Toast.makeText(
+                WelcomeActivity.this,
+                "Camera permission is required to use this application",
+                Toast.LENGTH_LONG)
+                .show();
     }
 
     /**
      * Requests the camera permission
      */
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void requestPermission() {
+        /*
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (shouldShowRequestPermissionRationale(PERMISSION_CAMERA)) {
-                /*
-                Toast.makeText(
-                        WelcomeActivity.this,
-                        "Camera permission is required to use this application",
-                        Toast.LENGTH_LONG)
-                        .show();
-                 */
             }
             requestPermissions(new String[]{PERMISSION_CAMERA}, PERMISSIONS_REQUEST);
         }
+         */
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.CAMERA)) {
+            // Provide an additional rationale to the user if the permission was not granted
+            // and the user would benefit from additional context for the use of the permission.
+            requestPermissions(new String[]{PERMISSION_CAMERA}, PERMISSIONS_REQUEST);
+        } else {
+            // Request the permission. The result will be received in onRequestPermissionResult().
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA}, PERMISSION_REQUEST_CAMERA);
+        }
+
     }
 
     //  viewpager change listener
